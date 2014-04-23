@@ -4,6 +4,9 @@ project(quickescape CXX)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 SET(CMAKE_BUILD_TYPE Debug)
 
+# Make cmake less derpy about files written in C
+ENABLE_LANGUAGE(C)
+
 if(UNIX)
 add_definitions("--std=c++11 -Wall")
 endif()
@@ -24,11 +27,6 @@ if(WIN32)
   # you are generating build files for.
   #
   set( BOOST_LIBRARYDIR "C:/LIBS/boost_1_55_0/lib64-msvc-12.0")
-endif()
-
-# Set enviromental variable if needed
-if (WIN32)
-  set (ENV{SDLDIR} "C:/SDL/deps/include")
 endif()
 
 set( PROJECT_SRC 

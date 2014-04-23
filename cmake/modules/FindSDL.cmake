@@ -80,14 +80,14 @@ FIND_PATH(SDL_INCLUDE_DIR SDL.h
   /opt/include/SDL
   /opt/include
 )
-#MESSAGE("SDL_INCLUDE_DIR is ${SDL_INCLUDE_DIR}")
+MESSAGE("SDL_INCLUDE_DIR is ${SDL_INCLUDE_DIR}")
 
 # SDL-1.1 is the name used by FreeBSD ports...
 # don't confuse it for the version number.
 FIND_LIBRARY(SDL_LIBRARY_TEMP 
   NAMES SDL SDL-1.1
   PATHS
-  $ENV{SDLDIR}
+  C:/SDL/deps/lib
   NO_DEFAULT_PATH
     PATH_SUFFIXES lib64 lib
 )
@@ -101,10 +101,11 @@ FIND_LIBRARY(SDL_LIBRARY_TEMP
   /opt/local
   /opt/csw
   /opt
+  C:/SDL/deps/lib
     PATH_SUFFIXES lib64 lib
 )
 
-#MESSAGE("SDL_LIBRARY_TEMP is ${SDL_LIBRARY_TEMP}")
+MESSAGE("SDL_LIBRARY_TEMP is ${SDL_LIBRARY_TEMP}")
 
 IF(NOT SDL_BUILDING_LIBRARY)
   IF(NOT ${SDL_INCLUDE_DIR} MATCHES ".framework")
@@ -116,6 +117,7 @@ IF(NOT SDL_BUILDING_LIBRARY)
       NAMES SDLmain SDLmain-1.1
       PATHS
       $ENV{SDLDIR}
+      C:/SDL/deps/lib
       NO_DEFAULT_PATH
       PATH_SUFFIXES lib64 lib
     )
@@ -129,6 +131,7 @@ IF(NOT SDL_BUILDING_LIBRARY)
       /opt/local
       /opt/csw
       /opt
+      C:/SDL/deps/lib
       PATH_SUFFIXES lib64 lib
     )
   ENDIF(NOT ${SDL_INCLUDE_DIR} MATCHES ".framework")
@@ -188,4 +191,4 @@ IF(SDL_LIBRARY_TEMP)
   SET(SDL_FOUND "YES")
 ENDIF(SDL_LIBRARY_TEMP)
 
-#MESSAGE("SDL_LIBRARY is ${SDL_LIBRARY}")
+MESSAGE("SDL_LIBRARY is ${SDL_LIBRARY}")
